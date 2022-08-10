@@ -50,6 +50,7 @@
         spacing: 10,10
         cols: 1
         Label:
+            id: la
             text: "Sign up for a new journey"
         TextInput:
             id: usrn
@@ -67,7 +68,7 @@
             spacing: 15,15
             Button:
                 text: "Sign Up"
-                on_press: root.add_user(root.ids.usrn.text, root.ids.pswd.text)
+                on_press: root.add_user(root.ids.usrn.text, root.ids.pswd.text, root.ids.cp.text)
                 size_hint: 0.4,0.5
                 pos_hint: {'center_x':0.7, 'center_y': 0.5}
             Button:
