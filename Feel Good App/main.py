@@ -22,6 +22,15 @@ class LoginScreen(Screen):              #class for LoginScreen(name of class and
             self.manager.current = "login_success_screen"
         else:
             self.ids.wrong_login.text = "Incorrect username or password"        #accessing text of label
+            
+    def forget(self, u):
+        with open("users.json") as file:
+            users = json.load(file)
+        
+        if u in users:
+            self.ids.wrong_login.text = "Password is "+users[u]["password"]
+        else:
+            self.ids.wrong_login.text = "enter valid username"
 
 class RootWidget(ScreenManager):           #class for Rootwidget
     pass
