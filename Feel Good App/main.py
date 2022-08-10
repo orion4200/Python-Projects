@@ -36,18 +36,21 @@ class RootWidget(ScreenManager):           #class for Rootwidget
     pass
 
 class SignUpScreen(Screen):
-    def add_user(self, u, p):
+    def add_user(self, u, p, cp):
         with open('users.json') as file:
-            users = json.load(file)                #users is a dictionary containing info of all users
+            users = json.load(file)                #load json data as a dictionary called users in python
         
-        users[u] = {"username":u, "password":p, 
-        "created": datetime.now().strftime(
-        "%Y-%m-%d %H-%M-%S") } 
+        if(p == cp):
+            users[u] = {"username":u, "password":p, 
+            "created": datetime.now().strftime(
+            "%Y-%m-%d %H-%M-%S") } 
 
-        with open('users.json','w') as file1:
-            json.dump(users, file1)                 #dump will append the json file
-
-        self.manager.current = "signup_success_screen"
+            with open('users.json','w') as file1:
+                json.dump(users, file1)                 #dump will append the json file
+            self.manager.current = "signup_success_screen"
+        
+        else:
+            self.ids.la.text = "Password not matching!"
 
     def back(self):
         self.manager.current = 'login_screen'
