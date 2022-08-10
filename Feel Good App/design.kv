@@ -33,6 +33,7 @@
             cols: 2
             Button:
                 text: "Forget Password"
+                on_press: root.forget(root.ids.uname.text)
                 background_color: 1,1,1,0
                 opacity: 1 if self.state=='normal' else 0.5
                 color: 1,1,0
